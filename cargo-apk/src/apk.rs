@@ -234,7 +234,7 @@ impl<'a> ApkBuilder<'a> {
                 cargo.arg("--target").arg(triple);
             }
             self.cmd.args().apply(&mut cargo);
-
+            dbg!(&cargo);
             if !cargo.status()?.success() {
                 return Err(NdkError::CmdFailed(cargo).into());
             }
@@ -364,6 +364,7 @@ impl<'a> ApkBuilder<'a> {
                 cargo.arg(additional_arg);
             }
 
+            dbg!(&cargo);
             if !cargo.status()?.success() {
                 return Err(NdkError::CmdFailed(cargo).into());
             }
