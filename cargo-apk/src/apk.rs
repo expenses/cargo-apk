@@ -150,6 +150,7 @@ impl<'a> ApkBuilder<'a> {
                 cargo.arg("--target").arg(triple);
             }
             self.cmd.args().apply(&mut cargo);
+            dbg!(&command);
             if !cargo.status()?.success() {
                 return Err(NdkError::CmdFailed(cargo).into());
             }
