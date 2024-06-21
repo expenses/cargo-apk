@@ -34,6 +34,7 @@ impl Default for StripConfig {
     }
 }
 
+#[derive(Debug)]
 pub struct ApkConfig {
     pub ndk: Ndk,
     pub build_dir: PathBuf,

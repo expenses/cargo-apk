@@ -216,6 +216,7 @@ impl<'a> ApkBuilder<'a> {
             strip: self.manifest.strip,
             reverse_port_forward: self.manifest.reverse_port_forward.clone(),
         };
+        dbg!(&config);
         let mut apk = config.create_apk()?;
 
         for target in &self.build_targets {
