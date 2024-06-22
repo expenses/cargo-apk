@@ -249,6 +249,8 @@ impl<'a> ApkBuilder<'a> {
                 .map(|path| path.as_path())
                 .collect::<Vec<_>>();
 
+            dbg!(&libs_search_paths);
+
             apk.add_lib_recursively(&artifact, *target, libs_search_paths.as_slice())?;
 
             if let Some(runtime_libs) = &runtime_libs {

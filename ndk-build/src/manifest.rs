@@ -58,6 +58,9 @@ impl AndroidManifest {
         let file = File::create(dir.join("AndroidManifest.xml"))?;
         let w = std::io::BufWriter::new(file);
         quick_xml::se::to_writer(w, &self)?;
+        let mut string = Vec::new();
+        quick_xml::se::to_writer(&mut string, &self)?;
+        dbg!(String::from_utf8(string).unwrap());
         Ok(())
     }
 }

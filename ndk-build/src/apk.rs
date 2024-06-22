@@ -97,6 +97,7 @@ impl ApkConfig {
             aapt.arg("-A").arg(assets);
         }
 
+        dbg!(&aapt);
         if !aapt.status()?.success() {
             return Err(NdkError::CmdFailed(aapt));
         }
@@ -163,6 +164,7 @@ impl<'a> UnalignedApk<'a> {
                     cmd.arg(format!("--add-gnu-debuglink={}", dwarf_path.display()));
                     cmd.arg(out);
 
+                    dbg!(&cmd);
                     if !cmd.status()?.success() {
                         return Err(NdkError::CmdFailed(cmd));
                     }
@@ -211,6 +213,7 @@ impl<'a> UnalignedApk<'a> {
             aapt.arg(lib_path_unix);
         }
 
+        dbg!(&aapt);
         if !aapt.status()?.success() {
             return Err(NdkError::CmdFailed(aapt));
         }
@@ -223,6 +226,7 @@ impl<'a> UnalignedApk<'a> {
             .arg(self.config.unaligned_apk())
             .arg(self.config.apk());
 
+        dbg!(&zipalign);
         if !zipalign.status()?.success() {
             return Err(NdkError::CmdFailed(zipalign));
         }
